@@ -13,6 +13,8 @@ jobs:
       - run: |
           sudo apt-get update
           sudo apt-get install -y protobuf-compiler
+          export ANDROID_HOME=/usr/local/lib/android/sdk
+          export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
           sdkmanager "platforms;android-34" "build-tools;34.0.0" "ndk;25.2.9519653" "cmake;3.22.1"
       - working-directory: chiaki-ng/android
         run: chmod +x gradlew && ./gradlew assembleDebug
